@@ -1,0 +1,6 @@
+#Thu, 28 Dec 2017 12:49:07 -0500
+
+info.app.version=1.4.10-SNAPSHOT
+info.app.name=omar-ui-app
+grails.env=development
+info.app.grailsVersion=3.3.1
