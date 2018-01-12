@@ -13,3 +13,4 @@ build/
 .vscode
 
 apps/omar-ui-app/application.yml
+apps/omar-ui-app/build
