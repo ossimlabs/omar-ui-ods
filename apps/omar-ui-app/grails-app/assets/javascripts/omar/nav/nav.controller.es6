@@ -26,8 +26,9 @@
 
     });
 
+    // User is from the OAuth2 security context
     vm.userShow = true;
-    vm.userName = AppO2.APP_CONFIG.userInfo.name;
+    vm.userName = AppO2.APP_CONFIG.user;
     $log.debug(`vm.userName = ${vm.userName}`);
 
     // Show/Hide the Metrics dropdown menu

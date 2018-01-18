@@ -7,15 +7,21 @@ import grails.converters.JSON
 
 import omar.ui.OmarSitesConfig
 
+import org.springframework.security.oauth2.provider.OAuth2Authentication
+import org.springframework.security.core.context.SecurityContextHolder
+
+import java.security.Principal
+
 class OmarController /*implements InitializingBean*/
 {
-  def openlayers
+    def openlayers
 
   OpenLayersConfig openLayersConfig
   OmarSitesConfig omarSitesConfig
 
   def index()
   {
+    OAuth2Authentication auth = (OAuth2Authentication) SecurityContextHolder.getContext().getAuthentication();
 
     // user information parameters coming in from application.yml
     def userInfo = grailsApplication.config.omar.app.userInfo
@@ -30,16 +36,19 @@ class OmarController /*implements InitializingBean*/
 
     grailsApplication.config.omar.app.sites = omarSitesConfig.sites
 
-      def clientConfig = [
-        serverURL: getBaseUrl(),
-        openlayers: openLayersConfig,
-        params: grailsApplication.config.omar.app,
-        userInfo: [name: userInfoName]
-      ]
+    def clientConfig = [
+      serverURL: getBaseUrl(),
+      openlayers: openLayersConfig,
+      params: grailsApplication.config.omar.app,
+      userInfo: [name: userInfoName],
+      userToken: auth.getDetails().getTokenValue(),
+      user: auth.name
+    ]
 
-  		[
-  				clientConfig: clientConfig
-  		]
+    [
+        clientConfig: clientConfig
+    ]
+
 	}
 
   void afterPropertiesSet() throws Exception
@@ -54,6 +63,5 @@ class OmarController /*implements InitializingBean*/
           openlayers.baseMaps = newBaseMaps
       }
 
-      // println openlayers as JSON
   }
 }
