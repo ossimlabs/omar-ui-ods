@@ -1,19 +1,13 @@
 package omar.app
 
-import omar.openlayers.OmarOpenlayersUtils
 import omar.openlayers.OpenLayersConfig
-import org.springframework.beans.factory.InitializingBean
-import grails.converters.JSON
 
 import omar.ui.OmarSitesConfig
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.provider.OAuth2Authentication
+import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 
-import java.security.Principal
-
-class OmarController /*implements InitializingBean*/
+class OmarController
 {
     def openlayers
 
@@ -23,7 +17,10 @@ class OmarController /*implements InitializingBean*/
   def index()
   {
 
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication()
+
+
+
 
     // user information parameters coming in from application.yml
     def userInfo = grailsApplication.config.omar.app.userInfo
