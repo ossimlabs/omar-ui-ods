@@ -38,7 +38,7 @@
     // AppO2.APP_CONFIG is passed down from the .gsp, and is a global variable.  It
     // provides access to various client params in application.yml
     // #################################################################################
-    //console.log('AppO2.APP_CONFIG in ListController: ', AppO2.APP_CONFIG);
+    $log.debug('AppO2.APP_CONFIG in ListController: ', AppO2.APP_CONFIG);
 
     /* jshint validthis: true */
     var vm = this;

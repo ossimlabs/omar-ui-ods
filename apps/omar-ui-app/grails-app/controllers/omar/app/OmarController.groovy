@@ -7,6 +7,7 @@ import grails.converters.JSON
 
 import omar.ui.OmarSitesConfig
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 
@@ -21,7 +22,8 @@ class OmarController /*implements InitializingBean*/
 
   def index()
   {
-    OAuth2Authentication auth = (OAuth2Authentication) SecurityContextHolder.getContext().getAuthentication();
+
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
     // user information parameters coming in from application.yml
     def userInfo = grailsApplication.config.omar.app.userInfo

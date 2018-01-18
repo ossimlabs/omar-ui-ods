@@ -7,15 +7,16 @@
       "$rootScope",
       "$http",
       "$timeout",
+      "$log",
       wfsService
     ]);
 
-  function wfsService(stateService, $rootScope, $http, $timeout) {
+  function wfsService(stateService, $rootScope, $http, $timeout, $log) {
     // #################################################################################
     // AppO2.APP_CONFIG is passed down from the .gsp, and is a global variable.  It
     // provides access to various client params in application.yml
     // #################################################################################
-    console.log("AppO2.APP_CONFIG in wfsService: ", AppO2.APP_CONFIG);
+    $log.debug("AppO2.APP_CONFIG in wfsService: ", AppO2.APP_CONFIG);
 
     var wfsBaseUrl, wfsContextPath, wfsRequestUrl, userToken;
 
@@ -94,7 +95,6 @@
 
     this.executeWfsQuery = function() {
       userToken = AppO2.APP_CONFIG.userToken;
-      console.log("userToken", userToken);
 
       if (this.attrObj.filter === "") {
         // Only send the spatialObj to filter the results
