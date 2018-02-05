@@ -1,6 +1,6 @@
 spring:
   application:
-    name: omar-ui
+    name: omar-ui-ods
   cloud:
     config:
       enabled: false
