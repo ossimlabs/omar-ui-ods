@@ -44,14 +44,8 @@ grails {
 		springsecurity {
 			rest {
 				oauth {
-// 					// frontendCallbackUrl = { String tokenValue ->
-// 					// 	"http://172.16.0.119:8080/omar-ui-ods/omar?token=${tokenValue}"
-// 					// }
-// 					frontendCallbackUrl = "http://172.16.0.119:8080/omar-ui-ods/omar?token="
 					github {
 						client = org.pac4j.oauth.client.GitHubClient
-// 						key = '09a9d3c110ecd0834841'
-// 						secret = 'f466b346e3ca43fe716ed6dcd80e3fd4a09f2190'
 						defaultRoles = ['ROLE_USER']
 					}
 					facebook {
