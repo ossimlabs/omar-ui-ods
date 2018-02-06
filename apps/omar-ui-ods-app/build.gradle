@@ -85,6 +85,9 @@ grails {
 }
 
 dependencies {
+    compile 'org.grails.plugins:spring-security-core:3.2.0'
+    compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
+
 /*
   if ( System.getenv('O2_DEV_HOME') ) {
       compile project(':omar-openlayers-plugin')
@@ -97,9 +100,9 @@ dependencies {
   }
 */
 
-  compile('org.springframework.boot:spring-boot-starter-security')
+  // compile('org.springframework.boot:spring-boot-starter-security')
 
-  compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.2.1.RELEASE'
+  // compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.2.1.RELEASE'
 
   compile "de.codecentric:spring-boot-admin-starter-client:1.5.4"
 

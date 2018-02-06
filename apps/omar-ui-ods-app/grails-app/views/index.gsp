@@ -62,6 +62,9 @@
                 this application, click on each to execute its default action:
             </p>
 
+            <g:link uri="/oauth/authenticate/github">GitHub</g:link>
+            <g:link uri="/oauth/authenticate/facebook">Facebook</g:link>
+
             <div id="controllers" role="navigation">
                 <h2>Available Controllers:</h2>
                 <ul>

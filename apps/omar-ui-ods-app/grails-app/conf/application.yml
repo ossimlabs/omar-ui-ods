@@ -519,3 +519,20 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+---
+grails:
+  plugin:
+    springsecurity:
+      rest:
+        oauth:
+          frontendCallbackUrl: "${grails.serverURL}/omar?token="
+          github:
+            key: 09a9d3c110ecd0834841
+            secret: f466b346e3ca43fe716ed6dcd80e3fd4a09f2190
+            # defaultRoles:
+            #   - ROLE_USER
+          facebook:
+            key: '158785364751787'
+            secret: ecd801fedb529a0fd32e95b0072bea5d
+                

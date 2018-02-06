@@ -4,12 +4,19 @@ import omar.openlayers.OpenLayersConfig
 
 import omar.ui.OmarSitesConfig
 
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.context.SecurityContextHolder
+import grails.converters.JSON
 
+
+// import org.springframework.security.core.Authentication
+// import org.springframework.security.core.context.SecurityContextHolder
+
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['ROLE_USER'])
 class OmarController
 {
     def openlayers
+    def springSecuritySevice
 
   OpenLayersConfig openLayersConfig
   OmarSitesConfig omarSitesConfig
@@ -17,7 +24,7 @@ class OmarController
   def index()
   {
 
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication()
+    // Authentication auth = SecurityContextHolder.getContext().getAuthentication()
 
 
 
@@ -40,8 +47,8 @@ class OmarController
       openlayers: openLayersConfig,
       params: grailsApplication.config.omar.app,
       userInfo: [name: userInfoName],
-      userToken: auth.getDetails().getTokenValue(),
-      user: auth.name
+      userToken: params.token, // auth.getDetails().getTokenValue(),
+      user: principal?.userProfile?.username
     ]
 
     [
