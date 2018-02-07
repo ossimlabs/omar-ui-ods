@@ -10,6 +10,9 @@ appender('STDOUT', ConsoleAppender) {
 
 root(ERROR, ['STDOUT'])
 logger('omar', INFO, ['STDOUT'], false)
+// logger("org.springframework.security", DEBUG, ['STDOUT'], false)
+// logger("grails.plugin.springsecurity", DEBUG, ['STDOUT'], false)
+// logger("org.pac4j", DEBUG, ['STDOUT'], false)
 
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir) {

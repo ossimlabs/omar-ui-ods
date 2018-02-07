@@ -6,6 +6,7 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'omar.ui.AuthUs
 grails.plugin.springsecurity.authority.className = 'omar.ui.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
+	[pattern: '/health',         access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
 	[pattern: '/index',          access: ['permitAll']],
 	[pattern: '/index.gsp',      access: ['permitAll']],
@@ -19,6 +20,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 ]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
+  [pattern: '/health/**',      filters: 'none'],
 	[pattern: '/assets/**',      filters: 'none'],
 	[pattern: '/**/js/**',       filters: 'none'],
 	[pattern: '/**/css/**',      filters: 'none'],
@@ -46,11 +48,13 @@ grails {
 				oauth {
 					github {
 						client = org.pac4j.oauth.client.GitHubClient
-						defaultRoles = ['ROLE_USER']
+						defaultRoles = ['ROLE_USER', 'ROLE_GITHUB']
 					}
 					facebook {
 						client = org.pac4j.oauth.client.FacebookClient
-						defaultRoles = ['ROLE_USER']
+						scope = 'email,user_location'
+					  fields = 'id,name,first_name,middle_name,last_name,username'
+					  defaultRoles = ['ROLE_USER', 'ROLE_FACEBOOK']
 					}
 				}
 			}
