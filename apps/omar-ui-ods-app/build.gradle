@@ -27,7 +27,6 @@ apply plugin: "org.grails.grails-gsp"
 apply plugin: "asset-pipeline"
 
 apply plugin: "java"
-apply plugin: "maven-publish"
 apply plugin: "maven"
 
 assets {
@@ -59,8 +58,6 @@ io.ossim.gradleDefaults.Variables.setVersionVariables(project)
 dockerBuildDir="${rootProject.projectDir}/docker"
 version "${buildVersion}-${buildVersionTag}"
 jarDestination = "${projectDir}/build/libs/${project.name}-${version}.jar"
-io.ossim.gradleDefaults.Publications.addPublication(project, groupName, name, "${buildVersion}-${buildVersionTag}")
-io.ossim.gradleDefaults.Publications.addRepository(project, mavenPublishUrl, mavenRepoUsername, mavenRepoPassword)
 io.ossim.gradleDefaults.Docker.addDockerTasks(project, dockerRegistryUrl, dockerRegistryUsername, dockerRegistryPassword, name, dockerImageTag, dockerBuildDir, jarDestination, ["BASE_IMAGE": dockerBaseImage])
 
 dependencyManagement {
